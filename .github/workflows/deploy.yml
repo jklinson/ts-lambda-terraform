@@ -37,13 +37,13 @@ jobs:
       working-directory: terraform
       env:
         TF_VAR_lambda_version: ${{ steps.get_version.outputs.version }}
-      run: terraform plan -var="lambda_version=$(node -p \"require('./lambda/package.json').version\")"
+      run: terraform plan -var="lambda_version=$(node -p \"require('../lambda/package.json').version\")"
 
     - name: Apply Terraform Changes
       working-directory: terraform
       env:
         TF_VAR_lambda_version: ${{ steps.get_version.outputs.version }}
-      run: terraform apply -var="lambda_version=$(node -p \"require('./lambda/package.json').version\")" -auto-approve
+      run: terraform apply -var="lambda_version=$(node -p \"require('../lambda/package.json').version\")" -auto-approve
 
     - name: Clean Temporary Files
       working-directory: lambda
