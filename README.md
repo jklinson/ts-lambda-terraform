@@ -92,13 +92,7 @@ The GitHub Actions workflow automates the CI/CD process for the Lambda function.
 3. Packaging the Lambda function.
 4. Deploying resources using Terraform.
 
-### Workflow File: `.github/workflows/deploy.yml`
-
-```yaml
-
-```
-
----
+Workflow File: `.github/workflows/deploy.yml`
 
 ## Notes
 - Ensure AWS credentials are configured in GitHub Actions secrets (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`).
