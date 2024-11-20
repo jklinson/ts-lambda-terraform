@@ -27,7 +27,7 @@ jobs:
     - name: Get Lambda Version
       working-directory: lambda
       id: get_version
-      run: echo "VERSION=$(node -p 'require(\"./package.json\").version')" >> $GITHUB_ENV
+      run: echo "VERSION=$(node -p 'require("./package.json").version')" >> $GITHUB_ENV
 
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v3
