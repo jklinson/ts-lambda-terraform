@@ -5,10 +5,25 @@ terraform {
       version = "~> 5.74.0"
     }
   }
+
+  backend "s3" {
+    bucket = "ts-lambda-terraform-state"
+    key    = "ts_lambda/terraform.tfstate"
+    region = "ap-southeast-2"
+  }
 }
 
 provider "aws" {
   region = "ap-southeast-2"
+}
+
+resource "aws_s3_bucket" "terraform_state" {
+  bucket = "ts-lambda-terraform-state"
+
+  # Prevent accidental deletion of this S3 bucket
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "aws_iam_role" "ts_lambda_role" {
